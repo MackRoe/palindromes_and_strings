@@ -19,7 +19,18 @@ def is_palindrome(text):
 
 def is_palindrome_iterative(text):
     # TODO: implement the is_palindrome function iteratively here
-    pass
+    left_index = 0
+    rt_index = len(text) - 1
+
+    # loop
+    while left_index < rt_index:
+        # check mismatch
+        if text[left_index] != text[rt_index]:
+            return False
+        # move to next char to check
+        left_index += 1
+        rt_index -= 1
+    return True
     # once implemented, change is_palindrome to call is_palindrome_iterative
     # to verify that your iterative implementation passes all tests
 
