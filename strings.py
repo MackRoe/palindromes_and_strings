@@ -35,6 +35,21 @@ def find_all_indexes(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_all_indexes here (iteratively and/or recursively)
+    text_to_search = text
+    found_indexes = []
+    found_index = find_index()
+
+    while len(text_to_search) > len(pattern):
+        # loop until all text has been searched
+        if found_index not None:  # pattern index found
+            found_indexes.append(found_index)
+            # add found index to indexes list
+        slice_vector = len(text_to_search) - found_index
+        # finds the index to be used to slice off the part of text that has
+        # already been searched
+        text_to_search = text[slice_vector: len(text)]
+        # eliminates previously searched section of text from text remaining to
+        # be searched
 
 
 def test_string_algorithms(text, pattern):
