@@ -16,14 +16,16 @@ def find_index(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_index here (iteratively and/or recursively)
-    for i in range(len(text)):
+    for i in range(len(text) - 1):
         # steps through each character in text
         flag = 0  # initialize flag
-        while i < len(text):
+        count = len(text)
+        while i < count:
             if pattern[i] == text[i]:
                 flag += 1
                 if flag == len(pattern):  # all chars in pattern found
                     found_index = i - flag
+                    count -= 1
                     return found_index
         else:
             return None
@@ -41,7 +43,7 @@ def find_all_indexes(text, pattern):
 
     while len(text_to_search) > len(pattern):
         # loop until all text has been searched
-        if found_index not None:  # pattern index found
+        if found_index >= 0:  # pattern index found
             found_indexes.append(found_index)
             # add found index to indexes list
         slice_vector = len(text_to_search) - found_index
