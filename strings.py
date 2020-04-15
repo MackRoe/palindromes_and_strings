@@ -23,9 +23,10 @@ def find_index(text, pattern):
             if pattern[i] == text[i]:
                 flag += 1
                 if flag == len(pattern):  # all chars in pattern found
-                    return True
+                    found_index = i - flag
+                    return found_index
         else:
-            return False
+            return None
 
 
 def find_all_indexes(text, pattern):
