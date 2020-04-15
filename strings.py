@@ -16,6 +16,16 @@ def find_index(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_index here (iteratively and/or recursively)
+    for i in range(len(text)):
+        # steps through each character in text
+        flag = 0  # initialize flag
+        while i < len(text):
+            if pattern[i] == text[i]:
+                flag += 1
+                if flag == len(pattern):  # all chars in pattern found
+                    return True
+        else:
+            return False
 
 
 def find_all_indexes(text, pattern):
